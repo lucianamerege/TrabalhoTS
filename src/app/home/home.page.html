@@ -10,19 +10,45 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
-    <img src="/assets/shapes.svg" alt=""/>
+  <!--<app-post></app-post>-->
+
+  <ion-content>
+    <ion-card class="welcome-card" *ngFor="let dadosPost of dadosPost">
+      <ion-card-header>
+        <ion-card-title> {{dadosPost.username}} </ion-card-title>
+      </ion-card-header>
+      <ion-icon name="thumbs-up" (click)="curtida(dadosPost)" size="large" color="{{dadosPost.curtiu ? 'primary' : 'light'}}"></ion-icon>{{dadosPost.numCurtidas}}
+      <ion-icon name="thumbs-down" (click)="descurtida(dadosPost)" size="large" color="{{dadosPost.descurtiu ? 'primary' : 'light'}}"></ion-icon>{{dadosPost.numDescurtidas}}
+      <ion-card-content>
+        <ion-icon *ngIf="dadosPost.spoiler" size="large" name="warning"></ion-icon>
+        <p>{{dadosPost.texto}}</p>
+      </ion-card-content>
+    </ion-card>
+
+  <!--<ion-card class="toystory"> 
     <ion-card-header>
-      <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to Ionic</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>
-        Now that your app has been created, you'll want to start building out features
-        and components. Check out some of the resources below for next steps.
-      </p>
-    </ion-card-content>
+      <img src="/assets/toystory.jpeg" alt="Capa do filme Toy Story 4">
+    </ion-card-header> 
+    <ion-card-subtitle class="generos">Animação, Comédia</ion-card-subtitle>
+    <div class="espacar">
+      <h3>Toy Story 4</h3>
+      <ion-chip class="avaliacao">
+        <ion-label >4.5</ion-label>
+      </ion-chip>
+    </div>
+    <div class="espacar">
+      <ion-button size="small" fill="outline" (click)="alerta()">QUERO VER</ion-button>
+      <ion-button size="small" fill="outline" (click)="presentToast()">JÁ VI</ion-button>
+    </div>
+    <ion-item></ion-item>
   </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 
   <ion-list lines="none">
     <ion-list-header>
@@ -44,5 +70,5 @@
       <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
       <ion-label>Theme Your App</ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 </ion-content>
